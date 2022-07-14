@@ -1,12 +1,19 @@
 import "./App.css";
 import * as React from "react";
-import Button from "@mui/material/Button";
+import MainPageComponent from "./main";
+import { Routes, Route } from "react-router-dom";
+import UploadPage from "./upload";
+import ProductPage from "./product";
 
 function App() {
   return (
-    <Button variant="contained" color="secondary">
-      Hello World!!!!
-    </Button>
+    <div>
+      <Routes>
+        <Route exact={true} path={"/"} element={<MainPageComponent />} />
+        <Route exact={true} path="/products/:id" element={<ProductPage />} />
+        <Route exact={true} path="/upload" element={<UploadPage />} />
+      </Routes>
+    </div>
   );
 }
 

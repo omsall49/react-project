@@ -3,6 +3,10 @@ import axios from "axios";
 import "./index.css";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+
+dayjs.extend(relativeTime);
 
 function MainPageComponent() {
   const [products, setProducts] = React.useState([]);
@@ -25,27 +29,29 @@ function MainPageComponent() {
         <img src="images/banners/banner3.png" />
       </div>
       <h1>판매 상품</h1>
-      <Button variant="text">Text</Button>
-      <Button variant="contained">Contained</Button>
-      <Button variant="outlined">Outlined</Button>
       <div id="product-list">
         {products.map(function (product, index) {
           return (
             <div className="product-card">
               <Link className="product-link" to={`/products/${product.id}`}>
                 <div>
-                  <img className="product-img" src={product.imageUrl} />
+                  <img className="product-img" src={product.imgeUrl} />
                 </div>
                 <div className="product-contents">
                   <span className="product-name">{product.name}</span>
                 </div>
                 <span className="product-price">{product.price}원</span>
-                <div className="product-seller">
-                  <img
-                    className="product-avatar"
-                    src="images/icons/avatar.png"
-                  />
-                  <span>{product.seller}</span>
+                <div className="product-footer">
+                  <div className="product-seller">
+                    <img
+                      className="product-avatar"
+                      src="images/icons/avatar.png"
+                    />
+                    <span>{product.seller}</span>
+                  </div>
+                  <span className="product-date">
+                    {dayjs(product.createdAt).fromNow()}
+                  </span>
                 </div>
               </Link>
             </div>

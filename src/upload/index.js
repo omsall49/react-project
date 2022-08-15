@@ -2,11 +2,23 @@ import { Divider, Form, Input, InputNumber, Upload } from "antd";
 import "./index.css";
 import { Button } from "antd";
 import { useState } from "react";
+import { API_URL } from "../config/constants";
+import axios from "axios";
 
 function UploadPage() {
   const [imgeUrl, setImgeUrl] = useState(null);
   const onSubmit = (values) => {
-    console.log(values);
+    axios
+      .post(`${API_URL}/products`, {
+        name: values.name,
+        description: values.description,
+        seller: values.seller,
+        price: parseInt(values.price),
+        imgeUrl: imgeUrl,
+      })
+      .then((result) => {
+        console.log(result);
+      });
   };
   const onChangeImage = (info) => {
     if (info.file.status === "uploading") {
@@ -27,13 +39,13 @@ function UploadPage() {
         >
           <Upload
             name="image"
-            action="http://localhost:8080/image"
+            action={`${API_URL}/image`}
             listType="picture"
             showUploadList={false}
             onChange={onChangeImage}
           >
             {imgeUrl ? (
-              <img id="upload-img" src={`http://localhost:8080/${imgeUrl}`} />
+              <img id="upload-img" src={`${API_URL}/${imgeUrl}`} />
             ) : (
               <div id="upload-img-placeholder">
                 <img src="/images/icons/camera.png" />

@@ -59,7 +59,12 @@ function MainPageComponent() {
         {products.map(function (product, index) {
           return (
             <div className="product-card">
-              <Link className="product-link" to={`/products/${product.id}`}>
+              {product.soldout === 1 && <div className="product-blur" />}
+              <Link
+                style={{ color: "inherit" }}
+                className="product-link"
+                to={`/products/${product.id}`}
+              >
                 <div>
                   <img
                     className="product-img"

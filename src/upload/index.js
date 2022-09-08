@@ -5,6 +5,7 @@ import { useState } from "react";
 import { API_URL } from "../config/constants";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import React from "react";
 
 function UploadPage() {
   const [imgeUrl, setImgeUrl] = useState(null);

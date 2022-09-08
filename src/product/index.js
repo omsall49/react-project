@@ -5,6 +5,7 @@ import "./index.css";
 import { API_URL } from "../config/constants";
 import dayjs from "dayjs";
 import { Button, message } from "antd";
+import React, { Component } from "react";
 
 function ProductPage() {
   const { id } = useParams();

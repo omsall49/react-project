@@ -54,10 +54,17 @@ function UploadPage() {
             onChange={onChangeImage}
           >
             {imgeUrl ? (
-              <img id="upload-img" src={`${API_URL}/${imgeUrl}`} />
+              <img
+                alt="상품 썸네일"
+                id="upload-img"
+                src={`${API_URL}/${imgeUrl}`}
+              />
             ) : (
               <div id="upload-img-placeholder">
-                <img src="/images/icons/camera.png" />
+                <img
+                  alt="상품사진 선택 전 이미지"
+                  src="/images/icons/camera.png"
+                />
                 <span>이미지를 업로드해주세요.</span>
               </div>
             )}

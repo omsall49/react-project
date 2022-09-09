@@ -1,5 +1,6 @@
 #banner {
   max-height: 300px;
+  margin-top: 80px;
 }
 
 #banner > img {
@@ -17,15 +18,20 @@
 #product-list {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 12px;
-  justify-content: space-around;
+  margin: 5px;
+  justify-content: flex-start;
+}
+
+#product-img {
+  object-fit: cover;
 }
 
 .product-card {
-  width: 180px;
-  height: 300px;
-  border: 1px solid rgb(230, 230, 230);
-  border-radius: 12px;
+  width: 200px;
+  height: 100%;
+  margin: 10px;
+  padding: 2px;
+
   overflow: hidden;
   position: relative;
 }
@@ -36,7 +42,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ffffffaa;
+  background-color: #ffffffcc;
+  z-index: 99;
   pointer-events: none;
 }
 

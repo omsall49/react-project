@@ -1,3 +1,4 @@
+import * as React from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -5,7 +6,6 @@ import "./index.css";
 import { API_URL } from "../config/constants";
 import dayjs from "dayjs";
 import { Button, message } from "antd";
-import React, { Component } from "react";
 
 function ProductPage() {
   const { id } = useParams();
@@ -45,10 +45,10 @@ function ProductPage() {
   return (
     <div>
       <div id="image-box">
-        <img src={`${API_URL}/${product.imgeUrl}`} />
+        <img alt="상품 썸네일" src={`${API_URL}/${product.imgeUrl}`} />
       </div>
       <div id="profile-box">
-        <img src="/images/icons/avatar.png" />
+        <img alt="유저 프로필" src="/images/icons/avatar.png" />
         <span>{product.seller}</span>
       </div>
 

@@ -7,6 +7,8 @@ import ProductPage from "./product";
 import { Button } from "antd";
 import { DownloadOutlined } from "@ant-design/icons";
 import React from "react";
+import Fab from "@mui/material/Fab";
+import AddIcon from "@mui/icons-material/Add";
 
 function App() {
   const navigate = useNavigate();
@@ -15,7 +17,7 @@ function App() {
       <div id="header">
         <div id="header-area">
           <Link to="/">
-            <img src="/images/icons/webudding.png" />
+            <img alt="위버딩 로고" src="/images/icons/webudding.png" />
           </Link>
           <Button
             size="large"
@@ -36,6 +38,17 @@ function App() {
         </Routes>
       </div>
       <div id="footer"></div>
+      <div id="floating-button">
+        <Fab
+          color="primary"
+          aria-label="add"
+          onClick={function () {
+            navigate("/upload");
+          }}
+        >
+          <AddIcon />
+        </Fab>
+      </div>
     </div>
   );
 }

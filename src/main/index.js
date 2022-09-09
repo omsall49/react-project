@@ -7,6 +7,12 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import { API_URL } from "../config/constants";
 import { Carousel } from "antd";
 
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { CardActionArea } from "@mui/material";
+
 dayjs.extend(relativeTime);
 
 function MainPageComponent() {
@@ -40,13 +46,13 @@ function MainPageComponent() {
   }, []);
 
   return (
-    <div>
+    <div id="container">
       <Carousel afterChange={onChange} autoplay autoplaySpeed={3000}>
         {banners.map((banner, index) => {
           return (
             <Link to={banner.href}>
               <div id="banner">
-                <img src={`${API_URL}/${banner.imageUrl}`} />
+                <img alt="메인 배너" src={`${API_URL}/${banner.imageUrl}`} />
               </div>
             </Link>
           );
@@ -58,6 +64,39 @@ function MainPageComponent() {
       <div id="product-list">
         {products.map(function (product, index) {
           return (
+            // <div className="product-card">
+            //   {product.soldout === 1 && <div className="product-blur" />}
+            //   <Link
+            //     style={{ color: "inherit" }}
+            //     className="product-link"
+            //     to={`/products/${product.id}`}
+            //   >
+            //     <div>
+            //       <img
+            //         alt="상품 썸네일"
+            //         className="product-img"
+            //         src={`${API_URL}/${product.imgeUrl}`}
+            //       />
+            //     </div>
+            //     <div className="product-contents">
+            //       <span className="product-name">{product.name}</span>
+            //     </div>
+            //     <span className="product-price">{product.price}원</span>
+            //     <div className="product-footer">
+            //       <div className="product-seller">
+            //         <img
+            //           alt="프로필 기본 이미지"
+            //           className="product-avatar"
+            //           src="images/icons/avatar.png"
+            //         />
+            //         <span>{product.seller}</span>
+            //       </div>
+            //       <span className="product-date">
+            //         {dayjs(product.createdAt).fromNow()}
+            //       </span>
+            //     </div>
+            //   </Link>
+            // </div>
             <div className="product-card">
               {product.soldout === 1 && <div className="product-blur" />}
               <Link
@@ -65,28 +104,28 @@ function MainPageComponent() {
                 className="product-link"
                 to={`/products/${product.id}`}
               >
-                <div>
-                  <img
-                    className="product-img"
-                    src={`${API_URL}/${product.imgeUrl}`}
-                  />
-                </div>
-                <div className="product-contents">
-                  <span className="product-name">{product.name}</span>
-                </div>
-                <span className="product-price">{product.price}원</span>
-                <div className="product-footer">
-                  <div className="product-seller">
-                    <img
-                      className="product-avatar"
-                      src="images/icons/avatar.png"
+                <Card sx={{ maxWidth: 345 }}>
+                  <CardActionArea>
+                    <CardMedia
+                      id="product-img"
+                      component="img"
+                      height="140"
+                      image={`${API_URL}/${product.imgeUrl}`}
+                      alt="상품 썸네일"
                     />
-                    <span>{product.seller}</span>
-                  </div>
-                  <span className="product-date">
-                    {dayjs(product.createdAt).fromNow()}
-                  </span>
-                </div>
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        {product.name}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {product.price}원<br />
+                        {dayjs(product.createdAt).fromNow()}
+                        <br />
+                        {product.seller}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
               </Link>
             </div>
           );

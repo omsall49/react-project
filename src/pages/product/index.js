@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./index.css";
-import { API_URL } from "../config/constants";
+import { API_URL } from "../../config/constants";
 import dayjs from "dayjs";
 import { Button, message } from "antd";
 
@@ -48,7 +48,7 @@ function ProductPage() {
         <img alt="상품 썸네일" src={`${API_URL}/${product.imgeUrl}`} />
       </div>
       <div id="profile-box">
-        <img alt="유저 프로필" src="/images/icons/avatar.png" />
+        <img alt="유저 프로필" src="./images/icons/avatar.png" />
         <span>{product.seller}</span>
       </div>
 

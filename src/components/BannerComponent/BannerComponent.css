@@ -1,0 +1,12 @@
+#banner {
+  max-height: 300px;
+  margin-top: 10px;
+}
+
+#banner > img {
+  width: 100%;
+  border: 1px;
+  max-height: 300px;
+  border-color: black;
+  border-style: solid;
+}

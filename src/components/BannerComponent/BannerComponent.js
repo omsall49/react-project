@@ -1,11 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import "antd/dist/antd.css";
 import { Carousel } from "antd";
-
 import axios from "axios";
-
 import "./BannerComponent.css";
 import { API_URL } from "../../config/constants";
 

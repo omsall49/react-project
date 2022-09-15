@@ -7,7 +7,7 @@ import { API_URL } from "../../config/constants";
 import dayjs from "dayjs";
 import { Button, message } from "antd";
 
-function ProductPage() {
+function ProductPageComponent() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
 
@@ -43,7 +43,7 @@ function ProductPage() {
   };
 
   return (
-    <div>
+    <div id="product-box">
       <div id="image-box">
         <img alt="상품 썸네일" src={`${API_URL}/${product.imgeUrl}`} />
       </div>
@@ -51,7 +51,6 @@ function ProductPage() {
         <img alt="유저 프로필" src="./images/icons/avatar.png" />
         <span>{product.seller}</span>
       </div>
-
       <div id="contents-box">
         <div id="name">{product.name}</div>
         <div id="price">{product.price}원</div>
@@ -73,4 +72,4 @@ function ProductPage() {
     </div>
   );
 }
-export default ProductPage;
+export default ProductPageComponent;
